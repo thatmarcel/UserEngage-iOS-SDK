@@ -3,7 +3,7 @@
 //  UserSDK
 //
 //  Created by Andrzej Puczyk on 08/03/2019.
-//  Copyright © 2019 Andrzej Puczyk. All rights reserved.
+//  Copyright © 2019 Future Mind, Sp. z o.o. All rights reserved.
 //
 
 import UIKit
@@ -133,13 +133,5 @@ extension UserSDK {
      Should be used wisely; in case of internet connection problems, all the data will still be removed.
      */
     public func logout(_ completion: ((Bool, Error?) -> Void)? = nil)
-
-}
-
-// TODO: Remove this before release
-extension UserSDK {
-
-    // TODO: Remove this before release
-    public var userDataDictionary: [String: Any] { get }
 
 }

@@ -3,7 +3,7 @@
 //  UserSDK
 //
 //  Created by Andrzej Puczyk on 08/03/2019.
-//  Copyright © 2019 Andrzej Puczyk. All rights reserved.
+//  Copyright © 2019 Future Mind, Sp. z o.o. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
