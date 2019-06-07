@@ -9,7 +9,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'YourApp' do
-    pod 'UserSDK', :git => 'https://github.com/UserEngage/iOS-SDK'
+    pod 'UserSDK'
 end
 ```
 
