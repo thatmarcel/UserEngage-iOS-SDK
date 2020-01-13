@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name UserSDK
 import AdSupport
 import SystemConfiguration.CaptiveNetwork
@@ -57,7 +57,7 @@ extension UserSDK {
     }
   }
   public func setUserData(_ userData: [UserSDK.UserSDK.UserDataKey : Swift.String?], _ completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
-  public func setCustomUserData(_ userData: [Swift.String : Any?], _ completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
+  public func setCustomUserData(_ customUserData: [Swift.String : Any?], _ completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
 }
 extension UserSDK {
   public func registerForRemoteNotifications(options: UserNotifications.UNAuthorizationOptions, notificationDelegate: UserSDK.RemoteNotificationDelegate? = nil)
