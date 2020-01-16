@@ -17,6 +17,7 @@ Pod::Spec.new do |spec|
     spec.source                 = { :git => "git@github.com:UserEngage/iOS-SDK.git", :tag => "#{version}" }
     spec.vendored_frameworks    = 'UserSDK.framework'
     spec.static_framework       = true
+    spec.author                 = { "User.com" => "contact@user.com" }
 
     spec.frameworks             = 'Foundation', 'UIKit', 'CoreTelephony', 'AdSupport', 'SystemConfiguration', 'UserNotifications'
     spec.dependency 'Firebase/Core'
