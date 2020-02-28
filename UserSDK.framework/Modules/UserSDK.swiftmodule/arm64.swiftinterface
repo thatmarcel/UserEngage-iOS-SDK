@@ -16,7 +16,7 @@ import UserNotifications
 public class UserSDK {
   public static var `default`: UserSDK.UserSDK? {
     get
-    set
+    set(newValue)
   }
   public static var inAppAlertCloseButtonText: Swift.String
   public var apiKey: Swift.String {
@@ -30,7 +30,7 @@ public class UserSDK {
     }
   public var notificationDelegate: UserSDK.RemoteNotificationDelegate? {
     get
-    set
+    set(newValue)
   }
   public var userId: Swift.String? {
     get
@@ -79,16 +79,18 @@ public enum ReachabilityError : Swift.Error {
   case UnableToGetInitialFlags
 }
 @available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
-public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+public var ReachabilityChangedNotification: Foundation.NSNotification.Name
 extension NSNotification.Name {
-  public static let reachabilityChanged: Foundation.Notification.Name
+  public static var reachabilityChanged: Foundation.Notification.Name
 }
 public class Reachability {
   public typealias NetworkReachable = (UserSDK.Reachability) -> ()
   public typealias NetworkUnreachable = (UserSDK.Reachability) -> ()
   @available(*, unavailable, renamed: "Connection")
   public enum NetworkStatus : Swift.CustomStringConvertible {
-    case notReachable, reachableViaWiFi, reachableViaWWAN
+    case notReachable
+    case reachableViaWiFi
+    case reachableViaWWAN
     public var description: Swift.String {
       get
     }
@@ -99,7 +101,9 @@ public class Reachability {
     public func hash(into hasher: inout Swift.Hasher)
   }
   public enum Connection : Swift.CustomStringConvertible {
-    case none, wifi, cellular
+    case none
+    case wifi
+    case cellular
     public var description: Swift.String {
       get
     }
@@ -121,8 +125,8 @@ public class Reachability {
     get
   }
   required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
-  convenience public init?(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
-  convenience public init?(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
+  public convenience init?(hostname: Swift.String, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
+  public convenience init?(queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
   @objc deinit
 }
 extension Reachability {
@@ -183,12 +187,3 @@ extension UIViewController : UserSDK.TrackableView {
   @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-extension UserSDK.UserSDK.UserDataKey : Swift.Equatable {}
-extension UserSDK.UserSDK.UserDataKey : Swift.Hashable {}
-extension UserSDK.UserSDK.UserDataKey : Swift.RawRepresentable {}
-@available(*, unavailable, renamed: "Connection")
-extension UserSDK.Reachability.NetworkStatus : Swift.Equatable {}
-@available(*, unavailable, renamed: "Connection")
-extension UserSDK.Reachability.NetworkStatus : Swift.Hashable {}
-extension UserSDK.Reachability.Connection : Swift.Equatable {}
-extension UserSDK.Reachability.Connection : Swift.Hashable {}
