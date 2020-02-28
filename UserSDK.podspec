@@ -5,6 +5,7 @@ Pod::Spec.new do |spec|
     swift_version               = '5.1.2'
 
     spec.name                   = "UserSDK"
+    spec.author                 = "User.com sp. z o.o."
     spec.version                = "#{version}"
     spec.summary                = "SDK for user.com"
     spec.homepage               = "http://user.com"
