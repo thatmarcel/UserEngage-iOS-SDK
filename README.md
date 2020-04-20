@@ -27,6 +27,10 @@ import UserSDK
 
 ## Changelog
 
+### 0.4.0
+
+Fixed bitcode support
+
 ### 0.3.0
 
 SDK components are no longer singletons which should improve lifecycle management and leave less garbage data after logout. Reordered push notifications subscription process, reduced redundant pings after receiving fcm token.
