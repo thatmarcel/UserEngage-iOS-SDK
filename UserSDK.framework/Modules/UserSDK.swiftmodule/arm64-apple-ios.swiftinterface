@@ -14,7 +14,7 @@ import UIKit
 import UserNotifications
 @_exported import UserSDK
 public class UserSDK {
-  public static var `default`: UserSDK.UserSDK? {
+  public static var `default`: UserSDK? {
     get
     set
   }
@@ -28,7 +28,7 @@ public class UserSDK {
   public var shouldTrackActivities: Swift.Bool {
     get
     }
-  public var notificationDelegate: UserSDK.RemoteNotificationDelegate? {
+  public var notificationDelegate: RemoteNotificationDelegate? {
     get
     set
   }
@@ -56,11 +56,11 @@ extension UserSDK {
       get
     }
   }
-  public func setUserData(_ userData: [UserSDK.UserSDK.UserDataKey : Swift.String?], _ completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
+  public func setUserData(_ userData: [UserSDK.UserDataKey : Swift.String?], _ completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
   public func setCustomUserData(_ customUserData: [Swift.String : Any?], _ completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
 }
 extension UserSDK {
-  public func registerForRemoteNotifications(options: UserNotifications.UNAuthorizationOptions, notificationDelegate: UserSDK.RemoteNotificationDelegate? = nil)
+  public func registerForRemoteNotifications(options: UserNotifications.UNAuthorizationOptions, notificationDelegate: RemoteNotificationDelegate? = nil)
   public func handleNotification(userInfo: [Swift.AnyHashable : Any])
 }
 extension UserSDK {
@@ -84,15 +84,15 @@ extension NSNotification.Name {
   public static let reachabilityChanged: Foundation.Notification.Name
 }
 public class Reachability {
-  public typealias NetworkReachable = (UserSDK.Reachability) -> ()
-  public typealias NetworkUnreachable = (UserSDK.Reachability) -> ()
+  public typealias NetworkReachable = (Reachability) -> ()
+  public typealias NetworkUnreachable = (Reachability) -> ()
   @available(*, unavailable, renamed: "Connection")
   public enum NetworkStatus : Swift.CustomStringConvertible {
     case notReachable, reachableViaWiFi, reachableViaWWAN
     public var description: Swift.String {
       get
     }
-    public static func == (a: UserSDK.Reachability.NetworkStatus, b: UserSDK.Reachability.NetworkStatus) -> Swift.Bool
+    public static func == (a: Reachability.NetworkStatus, b: Reachability.NetworkStatus) -> Swift.Bool
     public var hashValue: Swift.Int {
       get
     }
@@ -103,21 +103,21 @@ public class Reachability {
     public var description: Swift.String {
       get
     }
-    public static func == (a: UserSDK.Reachability.Connection, b: UserSDK.Reachability.Connection) -> Swift.Bool
+    public static func == (a: Reachability.Connection, b: Reachability.Connection) -> Swift.Bool
     public var hashValue: Swift.Int {
       get
     }
     public func hash(into hasher: inout Swift.Hasher)
   }
-  public var whenReachable: UserSDK.Reachability.NetworkReachable?
-  public var whenUnreachable: UserSDK.Reachability.NetworkUnreachable?
+  public var whenReachable: Reachability.NetworkReachable?
+  public var whenUnreachable: Reachability.NetworkUnreachable?
   public var allowsCellularConnection: Swift.Bool
   public var notificationCenter: Foundation.NotificationCenter
   @available(*, unavailable, renamed: "connection")
-  public var currentReachabilityStatus: UserSDK.Reachability.Connection {
+  public var currentReachabilityStatus: Reachability.Connection {
     get
   }
-  public var connection: UserSDK.Reachability.Connection {
+  public var connection: Reachability.Connection {
     get
   }
   required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability, queueQoS: Dispatch.DispatchQoS = .default, targetQueue: Dispatch.DispatchQueue? = nil)
@@ -146,7 +146,7 @@ public protocol RemoteNotificationDelegate {
 public protocol TrackableView {
   var screenName: Swift.String { get }
 }
-extension UIViewController : UserSDK.TrackableView {
+extension UIViewController : TrackableView {
   public var screenName: Swift.String {
     get
   }
@@ -183,12 +183,12 @@ extension UIViewController : UserSDK.TrackableView {
   @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
-extension UserSDK.UserSDK.UserDataKey : Swift.Equatable {}
-extension UserSDK.UserSDK.UserDataKey : Swift.Hashable {}
-extension UserSDK.UserSDK.UserDataKey : Swift.RawRepresentable {}
+extension UserSDK.UserDataKey : Swift.Equatable {}
+extension UserSDK.UserDataKey : Swift.Hashable {}
+extension UserSDK.UserDataKey : Swift.RawRepresentable {}
 @available(*, unavailable, renamed: "Connection")
-extension UserSDK.Reachability.NetworkStatus : Swift.Equatable {}
+extension Reachability.NetworkStatus : Swift.Equatable {}
 @available(*, unavailable, renamed: "Connection")
-extension UserSDK.Reachability.NetworkStatus : Swift.Hashable {}
-extension UserSDK.Reachability.Connection : Swift.Equatable {}
-extension UserSDK.Reachability.Connection : Swift.Hashable {}
+extension Reachability.NetworkStatus : Swift.Hashable {}
+extension Reachability.Connection : Swift.Equatable {}
+extension Reachability.Connection : Swift.Hashable {}
