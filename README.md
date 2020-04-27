@@ -2,14 +2,14 @@
 
 ## Installation
 
-Create Podfile and add pod 'UserSDK':
+Create Podfile and add pod 'UserSDK' with this git:
 
 ```ruby
 platform :ios, '11.0'
 use_frameworks!
 
 target 'YourApp' do
-    pod 'UserSDK'
+    pod 'UserSDK', :git => 'https://github.com/thatmarcel/UserEngage-iOS-SDK'
 end
 ```
 
